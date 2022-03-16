@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GridMovement : MonoBehaviour
 {
+	//This is only true when it's this character's turn
+	public bool turn = false;
+
 	//List that shows tiles the player can select while it is their turn
 	List<Tile> selectableTiles = new List<Tile>();
 
@@ -28,11 +31,17 @@ public class GridMovement : MonoBehaviour
 	//Determine where player is on a tile by getting their half height
 	float halfHeight = 0;
 
+	//For A*
+	public Tile targetTile;
+
 	protected void Initialize() 
 	{
 		tiles = GameObject.FindGameObjectsWithTag("Tile");
 
 		halfHeight = GetComponent<Collider>().bounds.extents.y;
+
+		//Add this character to turn manager
+		GridTurnManager.AddUnit(this);
 	}
 
 	//Get starting point for pathfinding
@@ -56,19 +65,19 @@ public class GridMovement : MonoBehaviour
 	}
 
 	//Calculate adjacency list for each tile
-	public void CalculateAdjacencyLists() 
+	public void CalculateAdjacencyLists(Tile target) 
 	{
 		foreach(GameObject tile in tiles) 
 		{
 			Tile t = tile.GetComponent<Tile>();
-			t.FindNeighbors();
+			t.FindNeighbors(target);
 		}
 	}
 
 	//BFS Search for selectable tiles
 	public void FindSelectableTiles() 
 	{
-		CalculateAdjacencyLists();
+		CalculateAdjacencyLists(null);
 		GetCurrentTile();
 
 		Queue<Tile> process = new Queue<Tile>();
@@ -101,7 +110,6 @@ public class GridMovement : MonoBehaviour
 			}
 		}
 	}
-
 
 	public void MoveToTile(Tile tile) 
 	{
@@ -148,11 +156,13 @@ public class GridMovement : MonoBehaviour
 				path.Pop();
 			}
 		}
-		//We have reached the target tile
+		//We have reached the target tile - stop movement and end turn
 		else 
 		{
 			RemoveSelectableTiles();
 			moving = false;
+
+			GridTurnManager.EndTurn();
 		}
 	}
 
@@ -184,5 +194,137 @@ public class GridMovement : MonoBehaviour
 	void SetVelocity() 
 	{
 		velocity = direction * moveSpeed;
+	}
+
+	protected Tile FindFMin(List<Tile> list) 
+	{
+		Tile lowest = list[0];
+
+		foreach(Tile t in list) 
+		{
+			if(t.fCost < lowest.fCost) 
+			{
+				lowest = t;
+			}
+		}
+
+		//Pull off open list and add to closed list
+		list.Remove(lowest);
+
+		return lowest;
+	}
+
+	//Similar to MoveToTile
+	protected Tile FindEndTile(Tile targTile) 
+	{
+		Stack<Tile> pathTemp = new Stack<Tile>();
+
+		//Don't stand ON player, but stand NEXT to them
+		Tile next = targTile.parent;
+
+		while(next != null) 
+		{
+			pathTemp.Push(next);
+			next = next.parent;
+		}
+
+		//if path is within this enemy's move range, return tile to move to
+		if(pathTemp.Count <= move) 
+		{
+			return targTile.parent;
+		}
+
+		//if out of range...only move to edge of this enemy's move range
+		Tile endTile = null;
+		for(int i = 0; i <= move; i++) 
+		{
+			endTile = pathTemp.Pop();
+		}
+
+		return endTile;
+	}
+
+	//A* Algorithm for enemy movement
+	//Research the algorithm for details on costs
+	protected void FindPath(Tile target) 
+	{
+		CalculateAdjacencyLists(target);
+
+		//Get starting location
+		GetCurrentTile();
+
+		//Open list contains any tile that HAS NOT been processed
+		List<Tile> openList = new List<Tile>();
+
+		//Closed list contains any tile that HAS been processed
+		List<Tile> closedList = new List<Tile>();
+
+		openList.Add(currentTile);
+
+		currentTile.hCost = Vector3.Distance(currentTile.transform.position, target.transform.position);
+		currentTile.fCost = currentTile.hCost;
+
+		//Process open list and add to closed list
+		while(openList.Count > 0) 
+		{
+			Tile t = FindFMin(openList);
+
+			closedList.Add(t);
+
+			//If we add target tile to closed list, we're done
+			//Similar to CheckMouseClick on PlayerMovement.cs
+			if(t == target) 
+			{
+				targetTile = FindEndTile(t);
+				MoveToTile(targetTile);
+				return;
+			}
+
+			//Process all tiles in adjacency list
+			foreach(Tile tile in t.adjacencyList) 
+			{
+				//if already in closed list, do nothing, already been processed
+				if(closedList.Contains(tile)) 
+				{
+
+				}
+				//if in open list, check to see if a better path is available
+				else if(openList.Contains(tile)) 
+				{
+					float gCostTemp = t.gCost + Vector3.Distance(tile.transform.position, t.transform.position);
+
+					//if temp g cost is better than current tile's g cost, choose temp since it's a better path
+					if(gCostTemp < tile.gCost) 
+					{
+						tile.parent = t;
+						tile.gCost = gCostTemp;
+						tile.fCost = tile.gCost + tile.hCost;
+					}
+				}
+				//otherwise, process tile and add to open list
+				else 
+				{
+					tile.parent = t;
+
+					tile.gCost = t.gCost + Vector3.Distance(tile.transform.position, t.transform.position);
+					tile.hCost = Vector3.Distance(tile.transform.position, target.transform.position);
+					tile.fCost = tile.gCost + tile.hCost;
+
+					openList.Add(tile);
+				}
+			}
+		}
+
+		//TODO: Deal with issue where path can't be found
+	}
+
+	public void BeginTurn() 
+	{
+		turn = true;
+	}
+
+	public void EndTurn() 
+	{
+		turn = false;
 	}
 }

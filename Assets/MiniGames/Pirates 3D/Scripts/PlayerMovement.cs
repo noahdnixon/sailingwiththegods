@@ -11,6 +11,12 @@ public class PlayerMovement : GridMovement
 
 	void Update() 
 	{
+		//Don't allow character to do anything if it isn't their turn
+		if(!turn) 
+		{
+			return;
+		}
+		//if moving disabled finding adjacent tiles or clicking tile to walk to
 		if(!moving) 
 		{
 			FindSelectableTiles();

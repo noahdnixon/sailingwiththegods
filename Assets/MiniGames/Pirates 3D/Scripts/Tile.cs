@@ -27,6 +27,12 @@ public class Tile : MonoBehaviour
 	//How far each tile is from current tile
 	public int distance = 0;
 
+	//For A* enemy movement
+	public float fCost = 0;
+	public float gCost = 0;
+	public float hCost = 0;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +46,7 @@ public class Tile : MonoBehaviour
 		//Use color to show where the players/enemies can move
         if(current) 
 		{
-			GetComponent<Renderer>().material.color = Color.magenta;
+			GetComponent<Renderer>().material.color = Color.blue;
 		}
 		else if(target) 
 		{
@@ -48,7 +54,7 @@ public class Tile : MonoBehaviour
 		}
 		else if(selectable)
 		{
-			GetComponent<Renderer>().material.color = Color.red;
+			GetComponent<Renderer>().material.color = Color.gray;
 		}
 		else 
 		{
@@ -67,19 +73,22 @@ public class Tile : MonoBehaviour
 		visited = false;
 		parent = null;
 		distance = 0;
+		fCost = 0;
+		gCost = 0;
+		hCost = 0;
 	}
 
-	public void FindNeighbors() 
+	public void FindNeighbors(Tile target) 
 	{
 		Reset();
 
-		CheckTile(Vector3.forward);
-		CheckTile(-Vector3.forward);
-		CheckTile(Vector3.right);
-		CheckTile(-Vector3.right);
+		CheckTile(Vector3.forward, target);
+		CheckTile(-Vector3.forward, target);
+		CheckTile(Vector3.right, target);
+		CheckTile(-Vector3.right, target);
 	}
 
-	public void CheckTile(Vector3 direction) 
+	public void CheckTile(Vector3 direction, Tile target) 
 	{
 		//Check for adjacent tiles
 		Vector3 halfExtents = new Vector3(0.25f, 1.0f, 0.25f);
@@ -95,7 +104,8 @@ public class Tile : MonoBehaviour
 				RaycastHit hit;
 
 				//if tile doesn't have someone/something on it, add to list
-				if(!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1)) 
+				//For enemy we find adjacent tile next to target
+				if(!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || tile == target) 
 				{
 					adjacencyList.Add(tile);
 				}
