@@ -13,6 +13,9 @@ public class Tile : MonoBehaviour
 	//If tile is within our move range
 	public bool selectable = false;
 
+	//Used for tiles in attack range
+	public bool attackRange = false;
+
 	//Used for obstacles or if other characters are on tile
 	public bool walkable = true;
 
@@ -56,6 +59,10 @@ public class Tile : MonoBehaviour
 		{
 			GetComponent<Renderer>().material.color = Color.gray;
 		}
+		else if (attackRange) 
+		{
+			GetComponent<Renderer>().material.color = Color.red;
+		}
 		else 
 		{
 			GetComponent<Renderer>().material.color = Color.white;
@@ -69,6 +76,7 @@ public class Tile : MonoBehaviour
 		current = false;
 		target = false;
 		selectable = false;
+		attackRange = false;
 		adjacencyList.Clear();
 		visited = false;
 		parent = null;
@@ -106,6 +114,10 @@ public class Tile : MonoBehaviour
 				//if tile doesn't have someone/something on it, add to list
 				//For enemy we find adjacent tile next to target
 				if(!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || tile == target) 
+				{
+					adjacencyList.Add(tile);
+				}
+				if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) && hit.transform.tag == "EnemyPiece") 
 				{
 					adjacencyList.Add(tile);
 				}

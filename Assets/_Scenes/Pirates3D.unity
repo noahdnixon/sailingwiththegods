@@ -170,6 +170,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -238,6 +239,84 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525345}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2598021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2598022}
+  - component: {fileID: 2598024}
+  - component: {fileID: 2598023}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2598022
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598021}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 498519414}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2598023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: EndTurn
+--- !u!222 &2598024
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598021}
+  m_CullTransparentMesh: 0
 --- !u!1 &9212447
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +414,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -452,6 +532,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -569,6 +650,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -686,6 +768,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -803,6 +886,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -986,6 +1070,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1103,6 +1188,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1220,6 +1306,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1337,6 +1424,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1454,6 +1542,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1571,6 +1660,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1688,6 +1778,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -1756,86 +1847,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205929977}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &214145275
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1360397625}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_Name
-      value: bodyUntextured2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1535127748916658156, guid: 029a589241c56764f86755589a9751fa,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f5f03ac75e91c8840a4e27b2c1491ef9, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 029a589241c56764f86755589a9751fa, type: 3}
---- !u!4 &214145276 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029a589241c56764f86755589a9751fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 214145275}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237445199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1896,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2002,6 +2014,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2119,6 +2132,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2236,6 +2250,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2353,6 +2368,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2470,6 +2486,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2587,6 +2604,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2704,6 +2722,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2821,6 +2840,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -2938,6 +2958,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3055,6 +3076,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3172,6 +3194,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3289,6 +3312,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3406,6 +3430,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3523,6 +3548,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3640,6 +3666,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -3878,6 +3905,7 @@ RectTransform:
   m_Children:
   - {fileID: 1324920453}
   - {fileID: 494273444}
+  - {fileID: 498519414}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3935,6 +3963,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4052,6 +4081,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4169,6 +4199,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4286,6 +4317,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4403,6 +4435,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4601,6 +4634,125 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494273443}
   m_CullTransparentMesh: 0
+--- !u!1 &498519410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 498519414}
+  - component: {fileID: 498519413}
+  - component: {fileID: 498519412}
+  - component: {fileID: 498519411}
+  m_Layer: 5
+  m_Name: EndTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &498519411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498519410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 498519412}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &498519412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498519410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &498519413
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498519410}
+  m_CullTransparentMesh: 0
+--- !u!224 &498519414
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498519410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2598022}
+  m_Father: {fileID: 410660854}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -333.125, y: -186.875}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &523761047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,6 +4802,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4767,6 +4920,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -4884,6 +5038,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5001,6 +5156,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5118,6 +5274,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5328,6 +5485,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5538,6 +5696,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5655,6 +5814,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5772,6 +5932,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -5889,6 +6050,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6006,6 +6168,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6123,6 +6286,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6240,6 +6404,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6357,6 +6522,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6474,6 +6640,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6591,6 +6758,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6708,6 +6876,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -6908,6 +7077,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7025,6 +7195,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7142,6 +7313,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7259,6 +7431,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7376,6 +7549,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7493,6 +7667,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7610,6 +7785,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7727,6 +7903,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -7890,6 +8067,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8007,6 +8185,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8124,6 +8303,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8241,6 +8421,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8358,6 +8539,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8440,7 +8622,7 @@ GameObject:
   - component: {fileID: 1198963488}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: PlayerPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8458,10 +8640,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turn: 0
-  move: 2
-  moveSpeed: 2
+  move: 10
+  moveSpeed: 5
   moving: 0
+  range: 1
+  damage: 3
+  hasMoved: 0
+  attacking: 0
   targetTile: {fileID: 0}
+  endTurn: {fileID: 498519411}
 --- !u!136 &1198963489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8548,6 +8735,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8665,6 +8853,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8782,6 +8971,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -8899,6 +9089,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -9016,6 +9207,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -9133,6 +9325,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -9487,120 +9680,11 @@ MonoBehaviour:
   move: 5
   moveSpeed: 2
   moving: 0
+  range: 3
+  damage: 3
+  hasMoved: 0
+  attacking: 0
   targetTile: {fileID: 0}
---- !u!1 &1360397620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1360397625}
-  - component: {fileID: 1360397624}
-  - component: {fileID: 1360397623}
-  - component: {fileID: 1360397622}
-  - component: {fileID: 1360397621}
-  m_Layer: 0
-  m_Name: Enemy (1)
-  m_TagString: EnemyPiece
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1360397621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360397620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae2fee96b1b848940a10dd44f747f117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turn: 0
-  move: 5
-  moveSpeed: 5
-  moving: 0
-  targetTile: {fileID: 0}
---- !u!136 &1360397622
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360397620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1360397623
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360397620}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f5f03ac75e91c8840a4e27b2c1491ef9, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1360397624
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360397620}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1360397625
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360397620}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.4, y: 1, z: -5.5}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
-  m_Children:
-  - {fileID: 214145276}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376771483
 GameObject:
   m_ObjectHideFlags: 0
@@ -9650,6 +9734,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -9767,6 +9852,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -9884,6 +9970,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10001,6 +10088,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10164,6 +10252,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10281,6 +10370,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10541,6 +10631,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10658,6 +10749,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10867,6 +10959,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -10984,6 +11077,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11145,6 +11239,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11262,6 +11357,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11379,6 +11475,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11496,6 +11593,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11691,6 +11789,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11858,6 +11957,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -11975,6 +12075,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12092,6 +12193,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12209,6 +12311,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12326,6 +12429,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12443,6 +12547,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12635,6 +12740,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12752,6 +12858,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12869,6 +12976,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -12986,6 +13094,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13103,6 +13212,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13220,6 +13330,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13337,6 +13448,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13454,6 +13566,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13571,6 +13684,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13688,6 +13802,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13853,6 +13968,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -13970,6 +14086,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14087,6 +14204,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14204,6 +14322,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14321,6 +14440,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14567,6 +14687,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14684,6 +14805,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14801,6 +14923,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -14918,6 +15041,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -15035,6 +15159,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -15152,6 +15277,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -15269,6 +15395,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -15386,6 +15513,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -15503,6 +15631,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
@@ -15620,6 +15749,7 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  attackRange: 0
   walkable: 1
   adjacencyList: []
   visited: 0
