@@ -41,6 +41,7 @@ TagManager:
   - Wine
   - EnemyPiece
   - PlayerPiece
+  - Tile
   layers:
   - Default
   - TransparentFX
