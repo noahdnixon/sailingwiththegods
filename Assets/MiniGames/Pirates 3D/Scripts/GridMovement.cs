@@ -10,6 +10,9 @@ public class GridMovement : MonoBehaviour
 	//List that shows tiles the player can select while it is their turn
 	List<Tile> selectableTiles = new List<Tile>();
 
+	//List that shows tiles the player can select for attack after movement
+	List<Tile> attackRangeTiles = new List<Tile>();
+
 	//List for all tiles in grid for adjacency checks
 	GameObject[] tiles;
 
@@ -19,10 +22,15 @@ public class GridMovement : MonoBehaviour
 	//Tile that player is on at beginning of each turn
 	Tile currentTile;
 
-	//Default moves per turn, speed of moves, and flag for player moving
+	//Default moves per turn, speed of moves, attack range, attack damage, flag for player moving, and if the player has moved
+	//Additions - attack range, attack damage, flag for if the player has moved
 	public int move = 5;
 	public float moveSpeed = 2;
 	public bool moving = false;
+	public int range = 3;
+	public int damage = 3;
+	public bool hasMoved = false;
+	public bool attacking = false;
 
 	//How fast player moves from tile to tile and direction they're facing
 	Vector3 velocity = new Vector3();
@@ -111,6 +119,42 @@ public class GridMovement : MonoBehaviour
 		}
 	}
 
+	public void ShowAttackRange() 
+	{
+		CalculateAdjacencyLists(null);
+		GetCurrentTile();
+
+		Queue<Tile> process = new Queue<Tile>();
+
+		process.Enqueue(currentTile);
+		currentTile.visited = true;
+
+		
+		while (process.Count > 0) 
+		{
+			Tile t = process.Dequeue();
+
+			attackRangeTiles.Add(t);
+			t.attackRange = true;
+
+			//if we aren't outside our max move distance
+			//process all nodes inside our move space
+			if (t.distance < range) 
+			{
+				foreach (Tile tile in t.adjacencyList) 
+				{
+					if (!tile.visited) 
+					{
+						tile.parent = t;
+						tile.visited = true;
+						tile.distance = 1 + t.distance;
+						process.Enqueue(tile);
+					}
+				}
+			}
+		}
+	}
+
 	public void MoveToTile(Tile tile) 
 	{
 		path.Clear();
@@ -162,8 +206,18 @@ public class GridMovement : MonoBehaviour
 			RemoveSelectableTiles();
 			moving = false;
 
-			GridTurnManager.EndTurn();
+			hasMoved = true;
+			attacking = true;
 		}
+	}
+
+	public void Attack() 
+	{
+		attacking = false;
+		hasMoved = false;
+		moving = false;
+		Debug.Log("You Attacked!");
+		GridTurnManager.EndTurn();
 	}
 
 	//When character has reached target tile and turn ends for them
@@ -181,6 +235,22 @@ public class GridMovement : MonoBehaviour
 		}
 
 		selectableTiles.Clear();
+	}
+
+	protected void RemoveAttackRangeTiles() 
+	{
+		if (currentTile != null) 
+		{
+			currentTile.current = false;
+			currentTile = null;
+		}
+		foreach (Tile tile in attackRangeTiles) 
+		{
+			tile.Reset();
+		}
+
+		Debug.Log("attackRangeTiles is empty.");
+		attackRangeTiles.Clear();
 	}
 
 	//Direction

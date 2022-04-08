@@ -19,10 +19,11 @@ public class EnemyMovement : GridMovement
 		//Don't allow character to do anything if it isn't their turn
 		if (!turn) 
 		{
+			hasMoved = false;
 			return;
 		}
 		//if moving disabled finding adjacent tiles
-		if (!moving) 
+		if (!moving && !hasMoved) 
 		{
 			//Show potential moves of the enemy
 			FindSelectableTiles();
@@ -37,6 +38,10 @@ public class EnemyMovement : GridMovement
 		else 
 		{
 			Move();
+		}
+		if(hasMoved) 
+		{
+			GridTurnManager.EndTurn();
 		}
 	}
 
