@@ -42,6 +42,8 @@ TagManager:
   - EnemyPiece
   - PlayerPiece
   - Tile
+  - checkpoint
+  - monster
   layers:
   - Default
   - TransparentFX
