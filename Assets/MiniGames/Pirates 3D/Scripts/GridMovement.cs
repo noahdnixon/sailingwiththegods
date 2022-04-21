@@ -11,7 +11,7 @@ public class GridMovement : MonoBehaviour
 	List<Tile> selectableTiles = new List<Tile>();
 
 	//List that shows tiles the player can select for attack after movement
-	List<Tile> attackRangeTiles = new List<Tile>();
+	public List<Tile> attackRangeTiles = new List<Tile>();
 
 	//List for all tiles in grid for adjacency checks
 	GameObject[] tiles;
@@ -28,9 +28,9 @@ public class GridMovement : MonoBehaviour
 	public float moveSpeed = 2;
 	public bool moving = false;
 	public int range = 3;
-	public int damage = 3;
 	public bool hasMoved = false;
 	public bool attacking = false;
+	public bool isAlive = true;
 
 	//How fast player moves from tile to tile and direction they're facing
 	Vector3 velocity = new Vector3();
@@ -82,6 +82,14 @@ public class GridMovement : MonoBehaviour
 		}
 	}
 
+	public void CalculateAttackAdjacencyLists(Tile target) 
+	{
+		foreach(GameObject tile in tiles) 
+		{
+			Tile t = tile.GetComponent<Tile>();
+			t.FindAttackNeighbors(target);
+		}
+	}
 	//BFS Search for selectable tiles
 	public void FindSelectableTiles() 
 	{
@@ -121,7 +129,7 @@ public class GridMovement : MonoBehaviour
 
 	public void ShowAttackRange() 
 	{
-		CalculateAdjacencyLists(null);
+		CalculateAttackAdjacencyLists(null);
 		GetCurrentTile();
 
 		Queue<Tile> process = new Queue<Tile>();
@@ -211,15 +219,6 @@ public class GridMovement : MonoBehaviour
 		}
 	}
 
-	public void Attack() 
-	{
-		attacking = false;
-		hasMoved = false;
-		moving = false;
-		Debug.Log("You Attacked!");
-		GridTurnManager.EndTurn();
-	}
-
 	//When character has reached target tile and turn ends for them
 	//Reset and clear everything
 	protected void RemoveSelectableTiles() 
@@ -249,7 +248,7 @@ public class GridMovement : MonoBehaviour
 			tile.Reset();
 		}
 
-		Debug.Log("attackRangeTiles is empty.");
+		//Debug.Log("attackRangeTiles is empty.");
 		attackRangeTiles.Clear();
 	}
 
@@ -395,6 +394,8 @@ public class GridMovement : MonoBehaviour
 
 	public void EndTurn() 
 	{
+		hasMoved = false;
+		attacking = false;
 		turn = false;
 	}
 }

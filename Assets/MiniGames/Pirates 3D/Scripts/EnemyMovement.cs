@@ -1,47 +1,83 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : GridMovement
 {
 	//The player controlled character we want to move to
 	GameObject target;
+	GameObject playerTarget;
+	public int health = 10;
+	public int damage = 3;
+	//public Text EnemyHealth;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
+		isAlive = true;
 		Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-		//Don't allow character to do anything if it isn't their turn
-		if (!turn) 
-		{
-			hasMoved = false;
-			return;
-		}
-		//if moving disabled finding adjacent tiles
-		if (!moving && !hasMoved) 
-		{
-			//Show potential moves of the enemy
-			FindSelectableTiles();
+		//EnemyHealth.text = "Enemy Health: " + health;
 
-			//Find target and path to them
-			FindNearestTarget();
-			CalculatePath();
+		if (health <= 0) 
+		{
+			isAlive = false;
+			gameObject.SetActive(false);
+			GridTurnManager.RemoveUnit();
+		}
 
-			//Turns tile this enemy wants to move to green
-			targetTile.target = true;
-		}
-		else 
+		if (isAlive) 
 		{
-			Move();
-		}
-		if(hasMoved) 
-		{
-			GridTurnManager.EndTurn();
+			//Don't allow character to do anything if it isn't their turn
+			if (!turn) 
+			{
+				hasMoved = false;
+				attacking = false;
+				return;
+			}
+			//if moving disabled finding adjacent tiles
+			if (!moving && !hasMoved) 
+			{
+				//Show potential moves of the enemy
+				FindSelectableTiles();
+
+				//Find target and path to them
+				FindNearestTarget();
+				CalculatePath();
+
+				//Turns tile this enemy wants to move to green
+				targetTile.target = true;
+			}
+			else 
+			{
+				Move();
+			}
+			if (hasMoved && !moving && attacking) 
+			{
+				Debug.Log("Enemy Attack Phase is Starting.");
+				ShowAttackRange();
+				if (FindAttackTarget()) 
+				{
+					Debug.Log("Starting Attack.");
+					Attack(playerTarget);
+				}
+				else 
+				{
+					moving = false;
+					attacking = false;
+					GridTurnManager.EndTurn();
+				}
+
+			}
+			if (hasMoved && !moving && !attacking) 
+			{
+				RemoveAttackRangeTiles();
+			}
 		}
 	}
 
@@ -50,6 +86,36 @@ public class EnemyMovement : GridMovement
 	{
 		Tile targetTile = GetTargetTile(target);
 		FindPath(targetTile);
+	}
+
+	bool FindAttackTarget() 
+	{
+		foreach (Tile t in attackRangeTiles) 
+		{
+			RaycastHit hit;
+			//Debug.DrawRay(t.transform.position, Vector3.up * 5f, Color.red, 5f);
+
+			if (Physics.Raycast(t.transform.position, Vector3.up, out hit, 1) && hit.collider.tag == "PlayerPiece") 
+			{
+				Debug.Log("Found player.");
+				playerTarget = hit.collider.gameObject;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void Attack(GameObject g) 
+	{
+		attacking = false;
+		hasMoved = false;
+		moving = false;
+
+		PlayerMovement p = g.GetComponent<PlayerMovement>();
+		p.health = p.health - damage;
+		Debug.Log("Enemy Attacked!");
+
+		GridTurnManager.EndTurn();
 	}
 
 	void FindNearestTarget() 

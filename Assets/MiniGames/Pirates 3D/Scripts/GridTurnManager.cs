@@ -8,10 +8,10 @@ public class GridTurnManager : MonoBehaviour
 	static Dictionary<string, List<GridMovement>> characters = new Dictionary<string, List<GridMovement>>();
 
 	//Queue to determine whose turn it is on a team
-	static Queue<GridMovement> whoseTeam = new Queue<GridMovement>();
+	static Queue<GridMovement> whoseTurn = new Queue<GridMovement>();
 
 	//Queue to determine whose team is going
-	static Queue<string> whoseTurn = new Queue<string>();
+	static Queue<string> whoseTeam = new Queue<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class GridTurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (whoseTeam.Count == 0) 
+		if (whoseTurn.Count == 0) 
 		{
 			InitializeTeamTurnQueue();
 		}
@@ -31,12 +31,12 @@ public class GridTurnManager : MonoBehaviour
 	//Determine whose team should be going
 	static void InitializeTeamTurnQueue() 
 	{
-		List<GridMovement> teamList = characters[whoseTurn.Peek()];
+		List<GridMovement> teamList = characters[whoseTeam.Peek()];
 
 		//Initialize next team before their turn starts
 		foreach(GridMovement character in teamList) 
 		{
-			whoseTeam.Enqueue(character);
+			whoseTurn.Enqueue(character);
 		}
 
 		StartTurn();
@@ -44,30 +44,33 @@ public class GridTurnManager : MonoBehaviour
 
 	static void StartTurn() 
 	{
-		if(whoseTeam.Count > 0) 
+		if(whoseTurn.Count > 0) 
 		{
-			whoseTeam.Peek().BeginTurn();
+			whoseTurn.Peek().BeginTurn();
 		}
 	}
 
 	public static void EndTurn() 
 	{
-		GridMovement character = whoseTeam.Dequeue();
+		GridMovement character = whoseTurn.Dequeue();
 		character.EndTurn();
 
+		Debug.Log("Turn is ending.");
 		//if any other character needs to go on a team, start their turn
-		if(whoseTeam.Count > 0) 
+		if(whoseTurn.Count > 0) 
 		{
 			StartTurn();
+			Debug.Log("Start next teammate turn.");
 		}
 		//else move on to next team
 		else 
 		{
-			string team = whoseTurn.Dequeue();
+			string team = whoseTeam.Dequeue();
 			//Move team to back of Queue so they can go again
-			whoseTurn.Enqueue(team);
+			whoseTeam.Enqueue(team);
 			//Next team has its turn
 			InitializeTeamTurnQueue();
+			Debug.Log("Move to next team.");
 		}
 	}
 
@@ -82,9 +85,9 @@ public class GridTurnManager : MonoBehaviour
 			list = new List<GridMovement>();
 			characters[character.tag] = list;
 
-			if(!whoseTurn.Contains(character.tag)) 
+			if(!whoseTeam.Contains(character.tag)) 
 			{
-				whoseTurn.Enqueue(character.tag);
+				whoseTeam.Enqueue(character.tag);
 			}
 		}
 		//else if character already exists, assign it in list
@@ -94,6 +97,11 @@ public class GridTurnManager : MonoBehaviour
 		}
 
 		list.Add(character);
+	}
+
+	public static void RemoveUnit() 
+	{
+		GridMovement character = whoseTurn.Dequeue();
 	}
 
 	//TODO: Remove character if killed
