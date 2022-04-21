@@ -96,6 +96,16 @@ public class Tile : MonoBehaviour
 		CheckTile(-Vector3.right, target);
 	}
 
+	public void FindAttackNeighbors(Tile target) 
+	{
+		Reset();
+
+		CheckAttackTile(Vector3.forward, target);
+		CheckAttackTile(-Vector3.forward, target);
+		CheckAttackTile(Vector3.right, target);
+		CheckAttackTile(-Vector3.right, target);
+	}
+
 	public void CheckTile(Vector3 direction, Tile target) 
 	{
 		//Check for adjacent tiles
@@ -117,7 +127,32 @@ public class Tile : MonoBehaviour
 				{
 					adjacencyList.Add(tile);
 				}
-				if(Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) && hit.transform.tag == "EnemyPiece") 
+			}
+		}
+	}
+
+	public void CheckAttackTile(Vector3 direction, Tile target) 
+	{
+		//Check for adjacent tiles
+		Vector3 halfExtents = new Vector3(0.25f, 1.0f, 0.25f);
+		Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtents);
+
+		//Add adjacent tiles that satisfy conditions to adjacent tile list
+		foreach (Collider coll in colliders) 
+		{
+			Tile tile = coll.GetComponent<Tile>();
+
+			if (tile != null && tile.walkable) 
+			{
+				RaycastHit hit;
+
+				//if tile doesn't have someone/something on it, add to list
+				//For enemy we find adjacent tile next to target
+				if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || tile == target) 
+				{
+					adjacencyList.Add(tile);
+				}
+				if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) && hit.transform.tag == "EnemyPiece") 
 				{
 					adjacencyList.Add(tile);
 				}
