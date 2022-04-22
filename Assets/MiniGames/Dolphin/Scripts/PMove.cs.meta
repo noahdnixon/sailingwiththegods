@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 66734e90dd5db464ba52cdc19e0b0bb6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dolphin: {fileID: 258349711218191383, guid: 3cd46135ffe76634697d2f7a2d587a40,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
