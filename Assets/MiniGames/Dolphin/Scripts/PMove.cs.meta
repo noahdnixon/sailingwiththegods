@@ -4,7 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - dolphin: {fileID: 258349711218191383, guid: 3cd46135ffe76634697d2f7a2d587a40,
+  - dolphin: {fileID: 3790297005360947828, guid: b06bdf48fd69e8e4d98e6155ff03bcc8,
+      type: 3}
+  - seaMonster: {fileID: 829398540619983479, guid: 19104139ecdfd304697ecb237a0e521a,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
