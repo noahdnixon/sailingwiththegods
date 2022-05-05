@@ -99,10 +99,10 @@ public class GridTurnManager : MonoBehaviour
 		list.Add(character);
 	}
 
-	public static void RemoveUnit() 
+	public static void RemoveUnit(GameObject unit) 
 	{
-		GridMovement character = whoseTurn.Dequeue();
+		whoseTurn.Dequeue();
+		characters.Remove(unit.name);
+		Debug.Log("Unit is out of turn order.");
 	}
-
-	//TODO: Remove character if killed
 }

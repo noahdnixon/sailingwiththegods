@@ -42,6 +42,8 @@ public class GridMovement : MonoBehaviour
 	//For A*
 	public Tile targetTile;
 
+	private Animator animator;
+
 	protected void Initialize() 
 	{
 		tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -50,6 +52,8 @@ public class GridMovement : MonoBehaviour
 
 		//Add this character to turn manager
 		GridTurnManager.AddUnit(this);
+
+		animator = GetComponent<Animator>();
 	}
 
 	//Get starting point for pathfinding
@@ -195,14 +199,17 @@ public class GridMovement : MonoBehaviour
 			//Move to tile
 			if(Vector3.Distance(transform.position, target) >= 0.05f) 
 			{
+				animator.SetBool("Walking", true);
 				CalculateDirection(target);
 				SetVelocity();
 
 				transform.forward = direction;
+				transform.rotation = Quaternion.Euler(0, 0, 0);
 				transform.position += velocity * Time.deltaTime;
 			}
 			else 
 			{
+				animator.SetBool("Walking", false);
 				//Tile center reached
 				transform.position = target;
 				path.Pop();

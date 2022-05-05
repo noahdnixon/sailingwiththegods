@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : GridMovement
 {
@@ -10,12 +11,21 @@ public class EnemyMovement : GridMovement
 	GameObject playerTarget;
 	public int health = 10;
 	public int damage = 3;
-	//public Text EnemyHealth;
+
+	public Image bar;
+	public GameObject healthBar;
+
+	public AudioClip attackSound;
+	public AudioClip hitSound;
+	public AudioClip deathSound;
+	public AudioSource playSounds;
 
 	// Start is called before the first frame update
 	void Start()
     {
 		isAlive = true;
+		healthBar.SetActive(false);
+		bar.fillAmount = (float)health / 10;
 		Initialize();
     }
 
@@ -24,11 +34,15 @@ public class EnemyMovement : GridMovement
     {
 		//EnemyHealth.text = "Enemy Health: " + health;
 
+
 		if (health <= 0) 
 		{
 			isAlive = false;
-			gameObject.SetActive(false);
-			GridTurnManager.RemoveUnit();
+			GridTurnManager.RemoveUnit(this.gameObject);
+			Destroy(this.gameObject);
+			//this.gameObject.SetActive(false);
+
+			playSounds.PlayOneShot(deathSound);
 		}
 
 		if (isAlive) 
@@ -39,6 +53,12 @@ public class EnemyMovement : GridMovement
 				hasMoved = false;
 				attacking = false;
 				return;
+			}
+
+			if (turn) 
+			{
+				bar.fillAmount = (float)health / 10;
+				healthBar.SetActive(true);
 			}
 			//if moving disabled finding adjacent tiles
 			if (!moving && !hasMoved) 
@@ -59,6 +79,7 @@ public class EnemyMovement : GridMovement
 			}
 			if (hasMoved && !moving && attacking) 
 			{
+
 				Debug.Log("Enemy Attack Phase is Starting.");
 				ShowAttackRange();
 				if (FindAttackTarget()) 
@@ -70,6 +91,7 @@ public class EnemyMovement : GridMovement
 				{
 					moving = false;
 					attacking = false;
+					healthBar.SetActive(false);
 					GridTurnManager.EndTurn();
 				}
 
@@ -113,8 +135,14 @@ public class EnemyMovement : GridMovement
 
 		PlayerMovement p = g.GetComponent<PlayerMovement>();
 		p.health = p.health - damage;
+		p.bar.fillAmount -= (float)damage / 10;
+
+		playSounds.PlayOneShot(attackSound);
+		p.playSounds.PlayOneShot(hitSound);
+
 		Debug.Log("Enemy Attacked!");
 
+		healthBar.SetActive(false);
 		GridTurnManager.EndTurn();
 	}
 
