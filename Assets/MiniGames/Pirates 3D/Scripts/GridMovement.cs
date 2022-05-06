@@ -23,7 +23,6 @@ public class GridMovement : MonoBehaviour
 	Tile currentTile;
 
 	//Default moves per turn, speed of moves, attack range, attack damage, flag for player moving, and if the player has moved
-	//Additions - attack range, attack damage, flag for if the player has moved
 	public int move = 5;
 	public float moveSpeed = 2;
 	public bool moving = false;
@@ -390,8 +389,6 @@ public class GridMovement : MonoBehaviour
 				}
 			}
 		}
-
-		//TODO: Deal with issue where path can't be found
 	}
 
 	public void BeginTurn() 

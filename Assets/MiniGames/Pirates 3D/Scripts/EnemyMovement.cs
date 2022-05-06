@@ -6,59 +6,76 @@ using UnityEngine.SceneManagement;
 
 public class EnemyMovement : GridMovement
 {
-	//The player controlled character we want to move to
+	//The computer controlled character we want to attack
+
+	//These are the basic components of the enemy class. These include the target of movement, the target player that the enemy wants to move to,
+	//their health and damage, and the various icons that go with them.
 	GameObject target;
 	GameObject playerTarget;
 	public int health = 10;
 	public int damage = 3;
-
 	public Image bar;
+	public GameObject icon;
 	public GameObject healthBar;
 
+	//This is the end turn button, which goes away when it is the enemy's turn
+	public GameObject endTurn;
+
+	//These are the audio clips of the enemy, which are also present on the player as well
 	public AudioClip attackSound;
 	public AudioClip hitSound;
 	public AudioClip deathSound;
 	public AudioSource playSounds;
 
-	// Start is called before the first frame update
+	//On start, the boolean 'isAlive' is set to true, and the Health Bar is filled.
+	//The function 'Initialize' is also called to activate.
+
 	void Start()
     {
 		isAlive = true;
-		healthBar.SetActive(false);
 		bar.fillAmount = (float)health / 10;
 		Initialize();
     }
 
-    // Update is called once per frame
     void Update()
     {
-		//EnemyHealth.text = "Enemy Health: " + health;
-
-
+		//This activates when the unit is at or below 0 health, signifying a death.
 		if (health <= 0) 
 		{
 			isAlive = false;
-			GridTurnManager.RemoveUnit(this.gameObject);
-			Destroy(this.gameObject);
-			//this.gameObject.SetActive(false);
+			icon.SetActive(false);
+			healthBar.SetActive(false);
+			transform.rotation = Quaternion.Euler(0, 0, 90);
+			this.gameObject.tag = "Untagged";
 
-			playSounds.PlayOneShot(deathSound);
+			//Set just in case the enemy gets a turn while dead
+			if (turn) 
+			{
+				GridTurnManager.EndTurn();
+			}
 		}
 
+		//These are the functions that the enemy goes through while alive.
 		if (isAlive) 
 		{
-			//Don't allow character to do anything if it isn't their turn
+			//Don't allow enemy to do anything if it isn't their turn
 			if (!turn) 
 			{
 				hasMoved = false;
 				attacking = false;
 				return;
 			}
-
+			//When it is the enemy's turn, the state of their health bar is updated again, and it disables the end turn button
 			if (turn) 
 			{
 				bar.fillAmount = (float)health / 10;
-				healthBar.SetActive(true);
+				endTurn.gameObject.SetActive(false);
+
+				//Set just in case the enemy gets a turn while dead
+				if (health <= 0) 
+				{
+					GridTurnManager.EndTurn();
+				}
 			}
 			//if moving disabled finding adjacent tiles
 			if (!moving && !hasMoved) 
@@ -75,13 +92,16 @@ public class EnemyMovement : GridMovement
 			}
 			else 
 			{
+				//Move function is called when ready to move.
 				Move();
 			}
 			if (hasMoved && !moving && attacking) 
 			{
-
+				//Once the enemy stops moving, thr attack phase begins.
 				Debug.Log("Enemy Attack Phase is Starting.");
 				ShowAttackRange();
+
+				//If the player is in range, then attack. Otherwise, end the turn.
 				if (FindAttackTarget()) 
 				{
 					Debug.Log("Starting Attack.");
@@ -91,11 +111,12 @@ public class EnemyMovement : GridMovement
 				{
 					moving = false;
 					attacking = false;
-					healthBar.SetActive(false);
 					GridTurnManager.EndTurn();
 				}
 
 			}
+
+			//Deletes the highlighted tiles of the attack range before ending turn.
 			if (hasMoved && !moving && !attacking) 
 			{
 				RemoveAttackRangeTiles();
@@ -110,13 +131,12 @@ public class EnemyMovement : GridMovement
 		FindPath(targetTile);
 	}
 
+	//Finds where the enemy will attack, and attacks whatever the variable 'playerTarget' is set as.
 	bool FindAttackTarget() 
 	{
 		foreach (Tile t in attackRangeTiles) 
 		{
 			RaycastHit hit;
-			//Debug.DrawRay(t.transform.position, Vector3.up * 5f, Color.red, 5f);
-
 			if (Physics.Raycast(t.transform.position, Vector3.up, out hit, 1) && hit.collider.tag == "PlayerPiece") 
 			{
 				Debug.Log("Found player.");
@@ -127,6 +147,7 @@ public class EnemyMovement : GridMovement
 		return false;
 	}
 
+	//The attack function for the enemy.
 	public void Attack(GameObject g) 
 	{
 		attacking = false;
@@ -138,11 +159,17 @@ public class EnemyMovement : GridMovement
 		p.bar.fillAmount -= (float)damage / 10;
 
 		playSounds.PlayOneShot(attackSound);
-		p.playSounds.PlayOneShot(hitSound);
+		if (p.health <= 0) 
+		{
+			p.playSounds.PlayOneShot(deathSound);
+		}
+		else 
+		{
+			p.playSounds.PlayOneShot(hitSound);
+		}
 
 		Debug.Log("Enemy Attacked!");
 
-		healthBar.SetActive(false);
 		GridTurnManager.EndTurn();
 	}
 

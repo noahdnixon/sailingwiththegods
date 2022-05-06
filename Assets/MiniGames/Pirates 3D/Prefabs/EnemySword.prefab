@@ -401,7 +401,9 @@ MonoBehaviour:
   health: 10
   damage: 5
   bar: {fileID: 1952939427538146054}
+  icon: {fileID: 1952939426529799606}
   healthBar: {fileID: 1952939426293387385}
+  endTurn: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 2a394b182af529b4793496ce7b284f52, type: 3}
   hitSound: {fileID: 8300000, guid: 1df5bf56c813a3c4aa984474c95557a7, type: 3}
   deathSound: {fileID: 8300000, guid: cc514d6f4cefb8d42aa8bc1b1080ef1a, type: 3}

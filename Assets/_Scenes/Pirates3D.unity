@@ -12014,13 +12014,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918407256}
-  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: -0.99, y: 17.97, z: -10.91}
+  m_LocalRotation: {x: 0.2917989, y: -0, z: -0, w: 0.95647967}
+  m_LocalPosition: {x: -0.9899998, y: 12.6, z: -16.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1329036602}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 33.931, y: 0, z: 0}
 --- !u!1 &920523563
 GameObject:
   m_ObjectHideFlags: 0
@@ -29465,6 +29465,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySling
       objectReference: {fileID: 0}
+    - target: {fileID: 675382557700074225, guid: 1e1ee704d46d5604596fa21d48b35177,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675382557700074226, guid: 1e1ee704d46d5604596fa21d48b35177,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 675382557700074228, guid: 1e1ee704d46d5604596fa21d48b35177,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29525,6 +29535,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 675382557700074229, guid: 1e1ee704d46d5604596fa21d48b35177,
+        type: 3}
+      propertyPath: endTurn
+      value: 
+      objectReference: {fileID: 927044601}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e1ee704d46d5604596fa21d48b35177, type: 3}
 --- !u!1001 &970289227833609019
@@ -29534,6 +29549,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 970289227235728643, guid: aaca9977ef133634ea20de5441af7a4f,
+        type: 3}
+      propertyPath: endTurn
+      value: 
+      objectReference: {fileID: 927044601}
     - target: {fileID: 970289227235728647, guid: aaca9977ef133634ea20de5441af7a4f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29682,6 +29702,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1952939427110882980, guid: 40166ef45f47c564cb7e38ade04efa20,
+        type: 3}
+      propertyPath: endTurn
+      value: 
+      objectReference: {fileID: 927044601}
     - target: {fileID: 1952939427110882981, guid: 40166ef45f47c564cb7e38ade04efa20,
         type: 3}
       propertyPath: m_Name
