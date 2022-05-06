@@ -8,6 +8,10 @@ MonoImporter:
       type: 3}
   - seaMonster: {fileID: 829398540619983479, guid: 19104139ecdfd304697ecb237a0e521a,
       type: 3}
+  - shipModels1: {fileID: 1794280630024534100, guid: f19be55d3dd3d814780089a25569c4ca,
+      type: 3}
+  - shipModels2: {fileID: 1550463696753465107, guid: 42bb99ed91dfbea4fa9d7a58dcfa5768,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
