@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Additive/World.unity
     guid: 04a1b4c9c04c777498fa00dbedf6d955
+  - enabled: 1
+    path: Assets/_Scenes/Pirates3D.unity
+    guid: 9f882d0c39f06ce428ee6868beb28c60
+  - enabled: 1
+    path: Assets/_Scenes/Dolphin.unity
+    guid: 9c4df788311fe2249aabc3e21d95c461
   m_configObjects: {}
